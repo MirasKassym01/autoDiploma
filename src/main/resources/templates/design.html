@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Spare Cloud</title>
+    <link rel="stylesheet" th:href="@{/styles.css}" />
+</head>
+<body>
+<h1>Design your auto!</h1>
+<img th:src="@{/images/AutoParts.jpeg}"/>
+<form method="POST" th:object="${spare}">
+    <div class="grid">
+        <div class="sparePart-group" id="transmissions">
+            <h3>Designate your transmission:</h3>
+            <div th:each="sparePart :${transmission}">
+                <input th:field=" *{spareParts}" type="checkbox"
+                       th:value=" ${spareParts.id}"/>
+                <span th:text=" ${spareParts.name}">SPAREPARTS</span><br/>
+            </div>
+        </div>
+        <div class="sparePart-group" id="engines">
+            <h3>Pick your engine :</h3>
+            <div th:each="sparePart : ${engine}">
+                <input th:field="*{spareParts}" type="checkbox"
+                       th:value="${spareParts.id}"/>
+                <span th:text="${spareParts.name}">SPAREPARTS</span><br/>
+            </div>
+        </div>
+        <div class="sparePart-group" id="steerings">
+            <h3>Choose your steering:</h3>
+            <div th:each="sparePart : ${steering}">
+                <input th:field="*{spareParts}" type="checkbox"
+                       th:value="${spareParts.id}"/>
+                <span th:text="${spareParts.name}">SPAREPARTS</span><br/>
+            </div>
+        </div>
+        <div class="sparePart-group" id="chassis">
+            <h3>Determine your chassis:</h3>
+            <div th:each="sparePart : ${chassis}">
+                <input th:field="*{spareParts}" type="checkbox"
+                       th:value="${spareParts.id}"/>
+                <span th:text="${spareParts.name}">SPAREPARTS</span><br/>
+            </div>
+        </div>
+    </div>
+    <div>
+        <h3>Name your spare parts:</h3>
+        <input type="text" th:field="*{name}"/>
+        <br/>
+        <button>Submit Your Spare</button>
+    </div>
+</form>
+</body>
+</html>
